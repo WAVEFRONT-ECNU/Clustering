@@ -3,7 +3,6 @@
 from Clustering.config import configs  # The config file.
 import Clustering.audio_class
 import Clustering.import_file
-import Clustering.save
 import librosa
 
 filelist = []
