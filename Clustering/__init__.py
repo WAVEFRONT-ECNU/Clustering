@@ -3,6 +3,7 @@
 from Clustering.config import configs  # The config file.
 import Clustering.audio_class
 import Clustering.import_file
+import Clustering.cluster_kmeans
 import librosa
 
 filelist = []
@@ -31,6 +32,8 @@ def start_culster():
         mfcc_list.append(audio.mfcc_average)
         __audiolist.append(audio)
 
+    assignments = cluster_kmeans.cluster_kmeans(mfcc_list, configs['people_num_test'])
+    # TODO finish cluster output
     audiolist = []
     for au in __audiolist:
         aud = [au.filename, au.people]

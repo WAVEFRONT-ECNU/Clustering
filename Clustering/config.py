@@ -3,5 +3,6 @@
 configs = {
     'n_mfcc': 12,
     'frame_size': 512,
-    'frame_shift': 128
+    'frame_shift': 128,
+    'people_num_test': 2
 }
