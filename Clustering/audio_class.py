@@ -3,6 +3,7 @@ class audio(object):
     filename = ""
     filepath = ""
     mfccs = np.ndarray
+    mfcc_average = []
     people = 0
     sr = 0
     d = 0  # duration
