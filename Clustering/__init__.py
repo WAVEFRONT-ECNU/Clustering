@@ -28,4 +28,7 @@ def start_culster():
     ####################################
 
     audiolist = []
-    save.save_wav_in_group(audiolist)
+    for au in __audiolist:
+        aud = [au.filename, au.people]
+        audiolist.append(aud)
+    return audiolist
