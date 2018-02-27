@@ -1,6 +1,7 @@
 class audio(object):
     import numpy as np
     filename = ""
+    filepath = ""
     mfccs = np.ndarray
     people = 0
     sr = 0
