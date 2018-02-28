@@ -8,6 +8,8 @@ import numpy as np
 import tensorflow as tf
 from random import choice, shuffle
 from numpy import array
+from Clustering.config import configs  # The config file.
+
 
 ############Sachin Joglekar的基于tensorflow写的一个kmeans模板###############
 def cluster_kmeans(vectors, noofclusters):
@@ -109,3 +111,15 @@ def cluster_kmeans(vectors, noofclusters):
         # 返回分组
         assignments = sess.run(assignments)
         return assignments
+
+
+def cluster(audio_list, people_number=2):
+    n_mfcc = configs['n_mfcc']
+    mfcc_list = np.ndarray
+    r = range(0, len(audio_list))
+    for i in r:
+        np.concatenate(mfcc_list, audio_list[i].mfccs_average, axis=0)
+    assignments = cluster_kmeans(mfcc_list, people_number)
+    for i in r:
+        audio_list[i].people = assignments[i]
+    return audio_list
