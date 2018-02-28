@@ -115,10 +115,10 @@ def cluster_kmeans(vectors, noofclusters):
 
 def cluster(audio_list, people_number=2):
     n_mfcc = configs['n_mfcc']
-    mfcc_list = np.ndarray
-    r = range(0, len(audio_list))
+    mfcc_list = [audio_list[0].mfccs_average]
+    r = range(1, len(audio_list))
     for i in r:
-        np.concatenate(mfcc_list, audio_list[i].mfccs_average, axis=0)
+        mfcc_list = np.row_stack((mfcc_list, [audio_list[i].mfccs_average]))
     assignments = cluster_kmeans(mfcc_list, people_number)
     for i in r:
         audio_list[i].people = assignments[i]

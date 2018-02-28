@@ -23,7 +23,6 @@ def start_culster():
         audio.filepath = filelist[i][1]
         y, audio.sr, audio.d = import_file.load_audio_file(audio.filepath)
         mfccs = librosa.feature.mfcc(y, audio.sr, n_mfcc=n_mfcc, hop_length=frame_shift, n_fft=frame_size)
-        r = range(0, len(audio.mfccs))
         audio.mfccs_average = np.mean(mfccs, axis=1)
         __audiolist.append(audio)
 
