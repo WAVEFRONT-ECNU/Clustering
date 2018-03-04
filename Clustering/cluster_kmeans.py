@@ -75,7 +75,7 @@ def cluster_kmeans(vectors, noofclusters):
         ##集群遍历
         # 接下来在K-Means聚类迭代中使用最大期望算法。为了简单起见，只让它执行固
         # 定的次数，而不设置一个终止条件
-        noofiterations = 20
+        noofiterations = 30
         for iteration_n in range(noofiterations):
 
             ##期望步骤
