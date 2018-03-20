@@ -36,9 +36,9 @@ def clusterDemo(audiolist):
 if __name__ == "__main__":
     print("Choose mode: \n1.From File \n2.From Stream \n")
     mode = input()
-    if mode == 1:
+    if mode == "1":
         fileDemo()
-    elif mode == 2:
+    elif mode == "2":
         streamDemo()
     audiolist = readAudioList()
     clusterDemo(audiolist)
