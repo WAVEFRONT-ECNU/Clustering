@@ -1,16 +1,20 @@
 import WaveSlicer
 import Clustering
-import time
 import os
+import multiprocessing
 
 
 def fileDemo():
-    raw = input("Input raw file name:")
+    raw = input("\nInput raw file name:")
     WaveSlicer.cut_audio_fromfile(raw, sp="output/", sn="test")
 
 
 def streamDemo():
-    WaveSlicer.cut_audio_fromstream("output/", "1")
+    p = multiprocessing.Process(target=WaveSlicer.cut_audio_fromstream("output/", "1"))
+    p.start()
+    stopFlag = input("\nInput Any Key To Stop...\n")
+    if stopFlag != "":
+        p.terminate()
 
 
 def readAudioList():
@@ -23,22 +27,21 @@ def readAudioList():
     return audiolist
 
 
-def clusterDemo(audiolist):
-    start = time.time()
-    Clustering.people_number = 2
+def clusterDemo(audiolist,peoplenumber):
+    Clustering.people_number = peoplenumber
     Clustering.filelist = audiolist
     outlist = Clustering.start_culster()
     print(outlist)
-    end = time.time()
-    print(end - start)
-
 
 if __name__ == "__main__":
     print("Choose mode: \n1.From File \n2.From Stream \n")
     mode = input()
+    if not os.path.exists("output/"):
+        os.mkdir("output/")
     if mode == "1":
         fileDemo()
     elif mode == "2":
         streamDemo()
+    peoplenumber = input("\nPlease input people number:\n")
     audiolist = readAudioList()
-    clusterDemo(audiolist)
+    clusterDemo(audiolist,peoplenumber)
