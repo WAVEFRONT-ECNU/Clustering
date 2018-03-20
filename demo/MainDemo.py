@@ -10,7 +10,7 @@ def fileDemo():
 
 
 def streamDemo():
-    p = multiprocessing.Process(target=WaveSlicer.cut_audio_fromstream("output/", "1"))
+    p = multiprocessing.Process(target=WaveSlicer.cut_audio_fromstream,args=("output/", "1"))
     p.start()
     stopFlag = input("\nInput Any Key To Stop...\n")
     if stopFlag != "":
